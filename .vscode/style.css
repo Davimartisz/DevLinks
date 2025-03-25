@@ -68,14 +68,19 @@ body * {
   position: absolute;
   z-index: 1;
   top: 50%;
-
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.2s forwards;
 }
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color)
+}
+
 
 #switch span {
   width: 64px;
@@ -147,4 +152,34 @@ ul li a:hover {
 footer {
   padding: 24px 0;
   text-align: center;
+}
+
+/* media queries */
+@media (min-width: 700px) { 
+  :root {
+    --bg-url: url(./assets/bg-mobile.jpg);
+  }
+
+  .light {
+    --bg-url: url(./pasta/bg-mobile-light2.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0%;
+  }
 }
